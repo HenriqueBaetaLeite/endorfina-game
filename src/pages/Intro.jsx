@@ -28,12 +28,12 @@ function Intro() {
       <select name="active" id="active" onChange={(event) => handleChange(event)}>
         <option value="">Escolha</option>
         <option value="sedentario">sedentário</option>
-        <option value="int">int</option>
-        <option value="ativo">ativo</option>
+        <option value="int">amador</option>
+        <option value="ativo">atleta</option>
       </select>
       <small>?</small>
 
-      <label htmlFor="">Disposição do dia</label>
+      <label htmlFor="dispo">Disposição do dia</label>
       <input id="bom" name="dispo" type="radio" value="bom" />
       <label htmlFor="bom">
         <span>&#128515;</span>
@@ -49,6 +49,7 @@ function Intro() {
         <span>&#128545;</span>
       </label>
       {/* tbm pode ser: &#x1F621; */}
+      <button type="submit">Entrar</button>
     </form>
   );
 }
