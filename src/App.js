@@ -9,7 +9,7 @@ function App() {
   return (
     <main className="container">
       <Switch>
-      <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/intro" component={Intro} />
         <Route path="/game" component={Game} />
       </Switch>

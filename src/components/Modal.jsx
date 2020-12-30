@@ -25,6 +25,7 @@ const Modal = ({ title, text }) => {
   const [Modal, open, close] = useModal('root', {
     preventScroll: true,
   });
+
   return (
     <span>
       <small style={{ cursor: 'pointer' }} onClick={open} className="float-right">
