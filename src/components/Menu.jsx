@@ -24,10 +24,10 @@ const MenuGlobal = () => {
               Início
             </Link>
             <Link class="nav-link" to="/warmup">
-              Treino
+              Aquecimento
             </Link>
-            <Link class="nav-link" to="/">
-              Histórico de treino
+            <Link class="nav-link" to="/game">
+              Treinamento
             </Link>
             <Link class="nav-link" to="/">
               Contato
