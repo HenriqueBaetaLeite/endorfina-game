@@ -46,7 +46,7 @@ const homeWodsEasy = [
   },
   {
     name: 'Burpees',
-    description: '50 Burpees',
+    description: '50 Burpees for time',
   },
 ];
 

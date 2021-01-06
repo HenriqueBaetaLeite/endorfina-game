@@ -2,14 +2,8 @@ import React, { useEffect, useContext, useState } from 'react';
 import EndorfinaContext from '../context';
 import { useHistory } from 'react-router-dom';
 
-import { Chance } from 'chance';
-
 import Menu from '../components/Menu';
 
-import exercisesTypes from '../data/exercisesTypes';
-// import homeWodsEasy from '../data/wods';
-
-//const chance = require('chance').Chance();
 const frase = {
   bom: 'Ótimo saber que está se sentindo bem hoje, assim podemos caprichar no treino!',
   regular: 'Relax, antes mesmo do aquecimento sua energia estará lá no alto!',
@@ -17,19 +11,14 @@ const frase = {
 };
 
 const Main = () => {
-  console.log(exercisesTypes);
-
   const history = useHistory();
   const [mood, setMood] = useState(null);
   const { userData, setUserData } = useContext(EndorfinaContext);
-  const [wod, setWod] = useState(null);
 
   useEffect(() => {
     localStorage.getItem('userData')
       ? setUserData(JSON.parse(localStorage.getItem('userData')))
       : history.push('/intro');
-    const newWod = Chance().pickone(exercisesTypes);
-    setWod(newWod);
   }, []);
 
   useEffect(() => {
@@ -43,7 +32,7 @@ const Main = () => {
 
   console.log('Estamos no GAME!!!', userData);
   console.log('minha dispo hj:', mood);
-  console.log('Esse foi o wod sorteado:', wod);
+
   return (
     <main className="container">
       <Menu />
@@ -82,12 +71,9 @@ const Main = () => {
         </p>
         <p>
           O relaxamento ao fim da intensa rotina de treino lhe ajudará a proporcionar uma
-          recuperação geral
-        </p>{' '}
-        <h5>O treino de hoje será:</h5>
-        <p>{wod ? wod.name : null}</p>
-        <p>{wod ? wod.description : null}</p>
-        <p>{wod ? wod.exercises : null}</p>
+          recuperação geral.
+        </p>
+
         <p>Link para consulta:</p>
         <p>https://medium.com/@wodify/the-15-best-crossfit-wods-for-beginners-part-2-2911e71607c</p>
         <p>https://wodfever.com/blogs/new-posts/20-crossfit-workouts-you-can-do-at-home</p>
