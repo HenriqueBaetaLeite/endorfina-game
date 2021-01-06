@@ -3,7 +3,7 @@ import useModal from 'react-hooks-use-modal';
 
 const modalStyle = {
   width: '300px',
-  backgroundColor: 'lightblue',
+  backgroundColor: 'yellow',
 };
 
 const treinamento = {
@@ -12,47 +12,59 @@ const treinamento = {
   p3: 'Samurai: mais de 3 anos de treino.',
 };
 const sedentarismo = {
-  p1: 'amador: entre 3 e 6 meses de treino sem interrupções.',
-  p2: 'atleta: mais de 1 ano de treino sem interrupções',
-  p3: 'sedentário: no mínimo 1 mês de treino',
+  p1: 'sedentário: no mínimo 1 mês de treino',
+  p2: 'amador: entre 3 e 6 meses de treino sem interrupções.',
+  p3: 'atleta: mais de 1 ano de treino sem interrupções',
 };
 const dispo = {
-  p1: '\uD83D\uDE00 - Estou muito bem hoje!',
-  p2: 'Pronto pra treinar...',
-  p3: 'Não estou 100%, mas não perco o treino!',
+  // p1: '\uD83D\uDE00 - Estou muito bem hoje!',
+  p1: 'opção 1: estou me sentindo muito bem hoje!',
+  p2: 'opção 2: pronto pra treinar...',
+  p3: 'opação 3: não estou 100%, mas não perco o treino!',
 };
-const Modal = ({ title, text }) => {
+const Modal = ({ title }) => {
   const [Modal, open, close] = useModal('root', {
     preventScroll: true,
   });
 
+  const finalText = () => {
+    switch (title) {
+      case 'Treinamento':
+        return treinamento.p1;
+      case 'Sedentarismo':
+        return treinamento.p2;
+      default:
+        return treinamento.p3;
+    }
+  };
+
   return (
     <span>
       <small style={{ cursor: 'pointer' }} onClick={open} className="float-right">
-        <i class="far fa-question-circle"></i>
+        <i className="far fa-question-circle"></i>
       </small>
 
       <Modal>
-        <div className="card p-2" style={modalStyle}>
-          <h2>{title}</h2>
+        <div className="card p-2 m-2" style={modalStyle}>
+          <h2 className="card-title">{title}</h2>
           <p>
-            {text === 'treino'
+            {title === 'Treinamento'
               ? treinamento.p1
-              : text === 'sedentarismo'
+              : title === 'Sedentarismo'
               ? sedentarismo.p1
               : dispo.p1}
           </p>
           <p>
-            {text === 'treino'
+            {title === 'Treinamento'
               ? treinamento.p2
-              : text === 'sedentarismo'
+              : title === 'Sedentarismo'
               ? sedentarismo.p2
               : dispo.p2}
           </p>
           <p>
-            {text === 'treino'
+            {title === 'Treinamento'
               ? treinamento.p3
-              : text === 'sedentarismo'
+              : title === 'Sedentarismo'
               ? sedentarismo.p3
               : dispo.p3}
           </p>

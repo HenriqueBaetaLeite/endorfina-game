@@ -19,17 +19,17 @@ const Intro = () => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     localStorage.setItem('userData', JSON.stringify(userData));
-    history.push('/game');
+    history.push('/main');
   };
 
-  console.log('userData vindo do context aqui', userData, user);
+  console.log('userData vindo do context aqui', userData);
+  console.log('user useState, q é setado no useffect: ', user);
 
   return (
-    <section className="w-50 mx-auto">
+    <main className="w-50 mx-auto container m-3">
       <form onSubmit={handleSubmit} className="form-intro card p-3" autoComplete="off">
         <div className="form-group">
           <label htmlFor="name">Nome / Apelido</label>
@@ -45,7 +45,7 @@ const Intro = () => {
 
         <div className="form-group">
           <label htmlFor="level">Nível de treinamento</label>
-          <Modal title={'Treinamento'} text={'treino'} />
+          <Modal title={'Treinamento'} />
           <select
             className="form-control"
             name="level"
@@ -62,7 +62,7 @@ const Intro = () => {
 
         <div className="form-group">
           <label htmlFor="active">Nível de sedentarismo</label>
-          <Modal title={'Sedentarismo'} text={'sedentarismo'} />
+          <Modal title={'Sedentarismo'} />
 
           <select
             className="form-control"
@@ -79,7 +79,7 @@ const Intro = () => {
         </div>
         <div className="form-group">
           <label htmlFor="mood">Disposição do dia</label>
-          <Modal title={'Disposição'} text={'dispo'} />
+          <Modal title={'Disposição'} />
           <div className="form-check">
             <input
               className="form-check-input"
@@ -92,7 +92,7 @@ const Intro = () => {
             />
             <label className="form-check-label" htmlFor="bom">
               <span role="img" aria-label="label">
-                <i class="far fa-grin-stars"></i>
+              <i className="far fa-laugh-wink"></i>
               </span>
             </label>
           </div>
@@ -107,7 +107,7 @@ const Intro = () => {
             />
             <label className="form-check-label" htmlFor="regular">
               <span role="img" aria-label="label">
-                <i class="far fa-meh-blank"></i>
+                <i className="far fa-meh-blank"></i>
               </span>
             </label>
           </div>
@@ -122,7 +122,7 @@ const Intro = () => {
             />
             <label className="form-check-label" htmlFor="mal">
               <span role="img" aria-label="label">
-                <i class="far fa-tired"></i>
+                <i className="far fa-tired"></i>
               </span>
             </label>
           </div>
@@ -132,8 +132,8 @@ const Intro = () => {
           Entrar
         </button>
       </form>
-    </section>
+    </main>
   );
-}
+};
 
 export default Intro;

@@ -9,7 +9,7 @@ const Home = () => {
     <p>Um aplicativo em forma de game para se divertir, praticar atividade física e cuidar da saúde.</p>
     <p>Nossa missão é fazer você se sentir bem!</p>
 
-    <button type="button" onClick={() => history.push('/game')} className="btn btn-success">Entre</button>
+    <button type="button" onClick={() => history.push('/main')} className="btn btn-success">Entre</button>
 
     </main>
   );

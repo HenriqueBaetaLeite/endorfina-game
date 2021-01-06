@@ -1,19 +1,20 @@
 import React from 'react';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Intro from './pages/Intro';
+import Main from './pages/Main';
+import Warmup from './pages/Warmup';
 import Game from './pages/Game';
-import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <main className="container">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/intro" component={Intro} />
-        <Route path="/game" component={Game} />
-      </Switch>
-    </main>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/intro" component={Intro} />
+      <Route exact path="/main" component={Main} />
+      <Route exact path="/warmup" component={Warmup} />
+      <Route exact path="/game" component={Game} />
+    </Switch>
   );
 }
 
