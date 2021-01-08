@@ -2,15 +2,27 @@ import React, { useEffect, useContext, useState } from 'react';
 import EndorfinaContext from '../context';
 import { useHistory } from 'react-router-dom';
 
+import warmupExercises from '../data/warmup';
+
 import { Chance } from 'chance';
 
-import warmupExercises from '../data/warmup';
+import { Steps, Button, message, Divider, Layout } from 'antd';
+
+import { LoadingOutlined } from '@ant-design/icons';
+
+const { Step } = Steps;
+
+const steps = [{ title: 'G1' }, { title: 'G2' }, { title: 'G3' }];
 
 const chance = Chance();
 
 const Warmup = () => {
   const history = useHistory();
   const { userData, setUserData } = useContext(EndorfinaContext);
+
+  const [warmupFinished, setWarmupFinished] = useState(false);
+
+  const [current, setCurrent] = useState(-1);
 
   const [group, setGroup] = useState(1);
 
@@ -85,10 +97,16 @@ const Warmup = () => {
     setDisableButton(false);
 
     setButtonFinish(false);
+
     if (group === 3) {
-      return history.push('/game');
+      // Aquecimento finalizado
+      // return history.push('/game');
+      setWarmupFinished(true);
+      setDisableButton(true);
+      message.success('Aquecimento completo', 5);
     }
     setExercises([]);
+    setCurrent(current + 1);
   };
 
   return (
@@ -107,10 +125,17 @@ const Warmup = () => {
       </section>
 
       <section className="card m-3 p-2">
-        <h3>Exercícios do grupo {group}</h3>
+        <Steps size="small" current={current}>
+          {steps.map((item) => (
+            <Step key={item.title} title={item.title} />
+          ))}
+        </Steps>
+        <br />
+
+        {/* <Divider /> */}
 
         <button disabled={disableButton} className="btn btn-warning w-25" onClick={generateWarmup}>
-          Gerar Exercícios
+          {warmupFinished ? 'Vá para o menu de treino' : `Gerar Exercícios G${group}`}
         </button>
 
         <section className="d-flex p-1 m-2">

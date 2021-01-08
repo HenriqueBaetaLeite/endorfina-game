@@ -1,22 +1,25 @@
 import React from 'react';
 
-import { slide as Menu } from 'react-burger-menu';
+import { Link } from 'react-router-dom';
+
+import { Menu } from 'antd';
 
 const Menu2 = () => {
   return (
     <Menu>
-      <a id="home" className="menu-item" href="/">
-        Home
-      </a>
-      <a id="about" className="menu-item" href="/about">
-        About
-      </a>
-      <a id="contact" className="menu-item" href="/contact">
-        Contact
-      </a>
-      <a className="menu-item--small" href="">
-        Settings
-      </a>
+      <Link className="nav-link active" aria-current="page" to="/main">
+        Início
+      </Link>
+
+      <Link className="nav-link" to="/warmup">
+        Aquecimento
+      </Link>
+      <Link className="nav-link" to="/game">
+        Treinamento
+      </Link>
+      <Link className="nav-link" to="/">
+        Contato
+      </Link>
     </Menu>
   );
 };

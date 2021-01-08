@@ -2,7 +2,9 @@ import React, { useEffect, useContext, useState } from 'react';
 import EndorfinaContext from '../context';
 import { useHistory } from 'react-router-dom';
 
-import Menu from '../components/Menu';
+import { Layout } from 'antd';
+
+const { Content, Sider, Header, Footer } = Layout;
 
 const frase = {
   bom: 'Ótimo saber que está se sentindo bem hoje, assim podemos caprichar no treino!',
@@ -34,8 +36,7 @@ const Main = () => {
   console.log('minha dispo hj:', mood);
 
   return (
-    <main className="container">
-      <Menu />
+    <div className="">
       <h1>
         Welcome to the Jungle {userData.level} {userData.name}!
       </h1>
@@ -85,7 +86,7 @@ const Main = () => {
       <button onClick={handleLogout} className="btn btn-danger m-3">
         Sair
       </button>
-    </main>
+    </div>
   );
 };
 
